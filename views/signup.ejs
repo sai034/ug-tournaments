@@ -1,0 +1,86 @@
+<head>
+<title>
+UGT - Registration Form
+</title>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0
+.0/css/materialize.min.css">
+<style type="text/css">
+.brand{
+background: blue !important ;
+}
+.brand-text
+{
+color:green !important ;
+}
+.bla
+{
+	color:black;
+	font-size: 30px;
+}
+form{
+max-width: 450px;
+margin:20px auto;
+padding:20px;
+}
+</style>
+</head>
+<body class="grey lighten-4">
+<nav class="white z-depth-0">
+<div class="container">
+<a href="/" class="bla">UG Tournaments</a>
+<ul id="nav-mobile" class="right hide-on-small-
+and-down">
+<li><a href="/logi1" class="btn brand z-depth-
+0">LOGIN</a></li>
+</ul>
+</div>
+</nav>
+<!-- <?php
+if(isset($_POST['submit']))
+{
+echo $_POST['urname'];//we r using key to get value which 
+will be entered in browser
+echo $_POST['urusn'];//Associated array
+echo $_POST['uremail'];
+echo $_POST['urpass'];
+echo $_POST['urcoll'];
+echo $_POST['urpla'];
+echo $_POST['ursta'];
+echo $_POST['uryear'];
+echo $_POST['ursem'];
+?> -->
+<!DOCTYPE html>
+<html>
+<!-- <?php include('templates/header1.php'); ?> -->
+<section class="container grey-text">
+<h3 class="center">India's Biggest Sporting Event</h3>
+<!--<form class="white" action="p31.php" method="GET"> -->
+<form class="white" action="/signup" method="post">
+<label><h6 style="color: red;"><%= error %></h6></label><br/>
+<label><h6>Your Name[Captain]</h6></label>
+<input type="text" name="name" required>
+<label><h6>Your Usn</h6></label>
+<input type="text" name="usn" required>
+<label><h6>Email</h6></label>
+<input type="text" name="email" required>
+<label><h6>College</h6></label>
+<input type="text" name="college" required>
+<label><h6>Place</h6></label>
+<input type="text" name="place" required>
+<label><h6>State</h6></label>
+<input type="text" name="state" required>
+<label><h6>Year of Study</h6></label>
+<input type="text" name="year" required>
+<label><h6>Password</h6></label>
+<input type="password" name="pass" required>
+<label><h6>Confirm Password</h6></label>
+<input type="password" name="confirmpass" required>
+<div class="center">
+<input type="submit" name="submit" value="submit" class="btn 
+brand z-depth-0">
+</div>
+</form>
+</section>
+<!-- <?php include('templates/footer.php'); ?> -->
+</html>
