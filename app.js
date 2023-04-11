@@ -104,7 +104,7 @@ app.post("/eventRegister", async function(req, res){
 		if (registeredTournaments == null) {
 			await addTournamentToUser(userId, tournament_name_to_register)
 			console.log("New user_tournament_map record created for user "+ userId+ " for tournament "+ tournament_name_to_register )
-			res.render(pageToRender, {registerSuccess: "Registration Successful", error: ""})
+			res.render(pageToRender, {registerSuccess: "Registration Successful! Please check your email for more details", error: ""})
 
 			// send event registered mail 
 			await sendMail(name, "REGISTER", tournament_name_to_register, email)
@@ -126,7 +126,7 @@ app.post("/eventRegister", async function(req, res){
 				tournamentNames.push(tournament_name_to_register)
 				await updateUserTournaments(userId, tournamentNames)
 				console.log("Updated the tournaments ", {tournamentNames});
-				res.render(pageToRender, {registerSuccess: "Registration Successful", error: ""})
+				res.render(pageToRender, {registerSuccess: "Registration Successful! Please check your email for more details", error: ""})
 
 				// send event registered mail 
 				await sendMail(name, "REGISTER", tournament_name_to_register, email)
