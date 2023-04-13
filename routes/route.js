@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-// Showing home page
+// HOME Page
 router.get("/", function (req, res) {
 	console.log("session id is ");
 	console.log(req.session && req.session.user_id);

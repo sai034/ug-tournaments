@@ -1,7 +1,18 @@
+/**
+ * boolean check if the user id registered to a tournament
+ * @param {string[]} tournamentNames 
+ * @param {string} currentTournamentToRegister 
+ * @returns {boolean}
+ */
 const isUserAlreadyRegisteredForSport = (tournamentNames, currentTournamentToRegister) => {
     return tournamentNames.includes(currentTournamentToRegister)
 }
 
+/**
+ * tournament name to the EJS page map
+ * @param {string} tournamentName 
+ * @returns string
+ */
 const tournamentToPageMap = (tournamentName) => {
     switch (tournamentName) {
         case "BADMINTON": return "gfbadminton"

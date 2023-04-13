@@ -7,7 +7,6 @@ const { sendMail } = require("./mail/mailer")
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({extended: 'false'}))
-// app.use(express.json())
 
 app.use(require("express-session")({
 	secret: "my lill secret",
@@ -20,7 +19,9 @@ const routes = require('./routes/route')
 app.use('/', routes);
 
 
-// Handling user signup
+/**
+ * User Sign Up
+ */
 app.post("/signup", async (req, res) => {
     console.log("signing up.....");
     console.log({reqBody: req.body})
@@ -55,7 +56,9 @@ app.post("/signup", async (req, res) => {
 	res.status(200).send()
 });
 
-//Handling user login
+/**
+ * User login
+ */
 app.post("/logi1", async function(req, res){
 	console.log("logging in");
 	try {
@@ -85,26 +88,25 @@ app.post("/logi1", async function(req, res){
 });
 
 
+/**
+ * Register to an event in the tournament
+ */
 app.post("/eventRegister", async function(req, res){
 	try {
-		// console.log({body:req.body})
 		const userId = req.session.user_id
 		const user = await getUserById(userId)
 		const { name, email } = user
-		console.log({name, email})
 		const tournament_name_to_register = req.body.tournament
-		console.log({userId, tournament_name_to_register});
 
 		// get user registered tournaments 
 		const registeredTournaments = await getRegisteredTournaments(userId)
-		console.log({registeredTournaments});
 		const pageToRender = tournamentToPageMap(tournament_name_to_register)
 
 		// if none registerd, then add a new row
 		if (registeredTournaments == null) {
 			await addTournamentToUser(userId, tournament_name_to_register)
 			console.log("New user_tournament_map record created for user "+ userId+ " for tournament "+ tournament_name_to_register )
-			res.render(pageToRender, {registerSuccess: "Registration Successful", error: ""})
+			res.render(pageToRender, {registerSuccess: "Registration Successful! Please check your email for more details", error: ""})
 
 			// send event registered mail 
 			await sendMail(name, "REGISTER", tournament_name_to_register, email)
@@ -114,7 +116,6 @@ app.post("/eventRegister", async function(req, res){
 
 			// check if already registered to the sport
 			const isUserAlreadyRegistered = isUserAlreadyRegisteredForSport(tournamentNames, tournament_name_to_register)
-			console.log({pageToRender});
 			if (isUserAlreadyRegistered) {
 				// redirect to the source page, with the appropriate error message 
 				res.render(pageToRender, {error: "Already Registered for this sport", registerSuccess: ""});
@@ -125,8 +126,7 @@ app.post("/eventRegister", async function(req, res){
 				console.log("Updating user_tournament_map record created for user "+ userId+ " for tournament "+ tournament_name_to_register )
 				tournamentNames.push(tournament_name_to_register)
 				await updateUserTournaments(userId, tournamentNames)
-				console.log("Updated the tournaments ", {tournamentNames});
-				res.render(pageToRender, {registerSuccess: "Registration Successful", error: ""})
+				res.render(pageToRender, {registerSuccess: "Registration Successful! Please check your email for more details", error: ""})
 
 				// send event registered mail 
 				await sendMail(name, "REGISTER", tournament_name_to_register, email)
@@ -139,13 +139,15 @@ app.post("/eventRegister", async function(req, res){
 	}
 });
 
-//Handling user logout
+/**
+ * User Logout
+ */
 app.post("/logout", function (req, res) {
 	delete req.session.user_id
 	res.redirect('/logi1')
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 9090;
 app.listen(port, function () {
-	console.log("Server Has Started!");
+	console.log(`Server Has Started on port ${port}`);
 });
