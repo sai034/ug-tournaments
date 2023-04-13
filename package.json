@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "node app.js",
+    "nodemon": "nodemon -x 'node app.js || touch app.js'"
+  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
@@ -12,6 +16,7 @@
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.3",
     "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0"
