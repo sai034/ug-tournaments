@@ -19,7 +19,7 @@ This web application is a platform which allows all the undergraduate students t
 * Kho-Kho
 
 # Functionalities
-1. **User Sign Up**: Users can be signed up using the sign up portal of the application. After the successful sign up, the user will receive a Welcome Email from the UG Tournaments team 
+1. **User Sign Up**: Users can be signed up using the sign up portal of the application. After successful sign up, the user will receive a Welcome Email from the UG Tournaments team 
 2. **User Login**: Post SignUp, Users can login to the application using their email and password
 3. **Events and Schedule**: Every sports event will have a clear description about the game, rules, schedule and rewards
 4. **Single Click Event Register**: Users can register themselves by navigating to the respective sports page and clicking on Register at the end of the page. A confirmation will be shown to the user after the action is successful. Also, an email notification will be sent to the User.
