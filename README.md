@@ -24,3 +24,7 @@ This web application is a platform which allows all the undergraduate students t
 * Marathon
 * Kho-Kho
 
+# Functionalities
+1. **User Sign Up**: Users can be signed up using the sign up portal of the application. After the successful sign up, the user will receive a Welcome Email from the UG Tournaments team 
+2. **User Login**: Post SignUp, Users can login to the application using their email and password
+3. **Single Click Event Register**: Users can register themselves 
