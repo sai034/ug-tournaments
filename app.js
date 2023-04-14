@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express();
 const { getUser, createUser, getRegisteredTournaments, addTournamentToUser, updateUserTournaments, getUserById } = require("./config/db")
-const { isUserAlreadyRegisteredForSport, tournamentToPageMap } = require('./helpers/helper')
+const { isUserAlreadyRegisteredForSport, tournamentToPageMap, isValidEmail } = require('./helpers/helper')
 const { sendMail } = require("./mail/mailer")
 
 app.set("view engine", "ejs");
@@ -23,13 +23,13 @@ app.use('/', routes);
  * User Sign Up
  */
 app.post("/signup", async (req, res) => {
-    console.log("signing up.....");
-    console.log({reqBody: req.body})
-	
-	// const { email, password } = req.body
+    console.log("signing up.....")
 	try {
-		const { pass, confirmpass } = req.body
-		if (pass !== confirmpass) {
+		const { pass, confirmpass, email } = req.body
+		if (!isValidEmail(email)) {
+			res.render("signup", {error: "Please enter a Valid Email"});
+			res.status(400).send()
+		} else if (pass !== confirmpass) {
 			res.render("signup", {error: "Passwords dont match! Please re-try"});
 			res.status(400).send()
 		} else {

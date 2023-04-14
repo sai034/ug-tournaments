@@ -36,21 +36,6 @@ and-down">
 </ul>
 </div>
 </nav>
-<!-- <?php
-if(isset($_POST['submit']))
-{
-echo $_POST['urname'];//we r using key to get value which 
-will be entered in browser
-echo $_POST['urusn'];//Associated array
-echo $_POST['uremail'];
-echo $_POST['urpass'];
-echo $_POST['urcoll'];
-echo $_POST['urpla'];
-echo $_POST['ursta'];
-echo $_POST['uryear'];
-echo $_POST['ursem'];
-?> -->
-<!DOCTYPE html>
 <html>
 <!-- <?php include('templates/header1.php'); ?> -->
 <section class="container grey-text">
@@ -63,15 +48,15 @@ echo $_POST['ursem'];
 <label><h6>Your Usn</h6></label>
 <input type="text" name="usn" required>
 <label><h6>Email</h6></label>
-<input type="text" name="email" required>
+<input type="text" name="email" required placeholder="Please enter a valid email">
 <label><h6>College</h6></label>
 <input type="text" name="college" required>
+<label><h6>Semester</h6></label>
+<input type="text" name="semester" required>
 <label><h6>Place</h6></label>
 <input type="text" name="place" required>
 <label><h6>State</h6></label>
 <input type="text" name="state" required>
-<label><h6>Year of Study</h6></label>
-<input type="text" name="year" required>
 <label><h6>Password</h6></label>
 <input type="password" name="pass" required>
 <label><h6>Confirm Password</h6></label>
@@ -82,5 +67,4 @@ brand z-depth-0">
 </div>
 </form>
 </section>
-<!-- <?php include('templates/footer.php'); ?> -->
 </html>
